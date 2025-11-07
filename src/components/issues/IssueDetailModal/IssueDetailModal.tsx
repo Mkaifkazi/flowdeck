@@ -95,182 +95,179 @@ const IssueDetailModal = ({ show, onHide, issueId }: IssueDetailModalProps) => {
       </Modal.Header>
 
       <Modal.Body>
-        <div className="issue-detail-container">
-          {/* Main Content */}
-          <div className="main-content">
-            {/* Title */}
-            <div className="issue-title-section">
-              {isEditing ? (
-                <div className="title-edit-form">
-                  <Form.Control
-                    type="text"
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                    autoFocus
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter') handleTitleSave();
-                      if (e.key === 'Escape') handleTitleCancel();
-                    }}
-                  />
-                  <div className="title-edit-actions">
-                    <Button size="sm" variant="primary" onClick={handleTitleSave}>
-                      Save
-                    </Button>
-                    <Button size="sm" variant="light" onClick={handleTitleCancel}>
-                      Cancel
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <h2 className="issue-title" onClick={handleTitleEdit}>
-                  {issue.title}
-                </h2>
-              )}
-            </div>
-
-            {/* Description */}
-            <div className="issue-section">
-              <div className="section-header">
-                <FiAlignLeft size={18} />
-                <h6>Description</h6>
-              </div>
-              <div className="description-content">
-                {issue.description || (
-                  <span className="text-muted">No description provided</span>
-                )}
-              </div>
-            </div>
-
-            {/* Labels */}
-            {issue.labels && issue.labels.length > 0 && (
-              <div className="issue-section">
-                <div className="section-header">
-                  <FiTag size={18} />
-                  <h6>Labels</h6>
-                </div>
-                <div className="labels-list">
-                  {issue.labels.map((label) => (
-                    <Badge key={label} bg="light" text="dark" className="label-badge">
-                      {label}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="sidebar-content">
-            {/* Status */}
-            <div className="detail-field">
-              <label>
-                <FiCheckSquare size={16} />
-                Status
-              </label>
-              <Form.Select
-                size="sm"
-                value={issue.status}
-                onChange={(e) => handleFieldUpdate('status', e.target.value)}
-              >
-                <option value="TODO">To Do</option>
-                <option value="IN_PROGRESS">In Progress</option>
-                <option value="IN_REVIEW">In Review</option>
-                <option value="DONE">Done</option>
-              </Form.Select>
-            </div>
-
-            {/* Priority */}
-            <div className="detail-field">
-              <label>
-                <FiAlertCircle size={16} />
-                Priority
-              </label>
-              <Form.Select
-                size="sm"
-                value={issue.priority}
-                onChange={(e) => handleFieldUpdate('priority', e.target.value)}
-              >
-                <option value="HIGHEST">Highest</option>
-                <option value="HIGH">High</option>
-                <option value="MEDIUM">Medium</option>
-                <option value="LOW">Low</option>
-                <option value="LOWEST">Lowest</option>
-              </Form.Select>
-            </div>
-
-            {/* Assignee */}
-            <div className="detail-field">
-              <label>
-                <FiUser size={16} />
-                Assignee
-              </label>
-              <Form.Select
-                size="sm"
-                value={issue.assigneeId || ''}
-                onChange={(e) => handleFieldUpdate('assigneeId', e.target.value || null)}
-              >
-                <option value="">Unassigned</option>
-                {users.map((user) => (
-                  <option key={user.id} value={user.id}>
-                    {user.name}
-                  </option>
-                ))}
-              </Form.Select>
-            </div>
-
-            {/* Story Points */}
-            <div className="detail-field">
-              <label>
-                <FiZap size={16} />
-                Story Points
-              </label>
-              <Form.Control
-                type="number"
-                size="sm"
-                value={issue.storyPoints || ''}
-                onChange={(e) =>
-                  handleFieldUpdate('storyPoints', Number(e.target.value) || null)
+        <Form>
+          <Form.Group className="mb-3">
+            <Form.Label>Title</Form.Label>
+            <Form.Control
+              type="text"
+              value={isEditing ? editedTitle : issue.title}
+              onChange={(e) => {
+                if (!isEditing) {
+                  setEditedTitle(e.target.value);
+                  setIsEditing(true);
+                } else {
+                  setEditedTitle(e.target.value);
                 }
-                min="0"
-              />
+              }}
+              onBlur={() => {
+                if (isEditing && editedTitle.trim()) {
+                  handleTitleSave();
+                } else {
+                  handleTitleCancel();
+                }
+              }}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') handleTitleSave();
+                if (e.key === 'Escape') handleTitleCancel();
+              }}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label>Description</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={4}
+              value={issue.description || ''}
+              onChange={(e) => handleFieldUpdate('description', e.target.value)}
+              placeholder="No description provided"
+            />
+          </Form.Group>
+
+          <div className="row">
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Type</Form.Label>
+                <Form.Select
+                  value={issue.type}
+                  onChange={(e) => handleFieldUpdate('type', e.target.value)}
+                >
+                  <option value="story">Story</option>
+                  <option value="task">Task</option>
+                  <option value="bug">Bug</option>
+                  <option value="epic">Epic</option>
+                </Form.Select>
+              </Form.Group>
             </div>
 
-            {/* Due Date */}
-            <div className="detail-field">
-              <label>
-                <FiCalendar size={16} />
-                Due Date
-              </label>
-              <Form.Control
-                type="date"
-                size="sm"
-                value={issue.dueDate ? issue.dueDate.split('T')[0] : ''}
-                onChange={(e) => handleFieldUpdate('dueDate', e.target.value || null)}
-              />
-            </div>
-
-            {/* Created/Updated */}
-            <div className="detail-field">
-              <label>
-                <FiClock size={16} />
-                Created
-              </label>
-              <div className="text-muted small">
-                {new Date(issue.createdAt).toLocaleDateString()}
-              </div>
-            </div>
-
-            <div className="detail-field">
-              <label>
-                <FiClock size={16} />
-                Updated
-              </label>
-              <div className="text-muted small">
-                {new Date(issue.updatedAt).toLocaleDateString()}
-              </div>
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Priority</Form.Label>
+                <Form.Select
+                  value={issue.priority}
+                  onChange={(e) => handleFieldUpdate('priority', e.target.value)}
+                >
+                  <option value="HIGHEST">Highest</option>
+                  <option value="HIGH">High</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="LOW">Low</option>
+                  <option value="LOWEST">Lowest</option>
+                </Form.Select>
+              </Form.Group>
             </div>
           </div>
-        </div>
+
+          <div className="row">
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Status</Form.Label>
+                <Form.Select
+                  value={issue.status}
+                  onChange={(e) => handleFieldUpdate('status', e.target.value)}
+                >
+                  <option value="TODO">To Do</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="IN_REVIEW">In Review</option>
+                  <option value="DONE">Done</option>
+                </Form.Select>
+              </Form.Group>
+            </div>
+
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Assignee</Form.Label>
+                <Form.Select
+                  value={issue.assigneeId || ''}
+                  onChange={(e) => handleFieldUpdate('assigneeId', e.target.value || null)}
+                >
+                  <option value="">Unassigned</option>
+                  {users.map((user) => (
+                    <option key={user.id} value={user.id}>
+                      {user.name}
+                    </option>
+                  ))}
+                </Form.Select>
+              </Form.Group>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Story Points</Form.Label>
+                <Form.Control
+                  type="number"
+                  value={issue.storyPoints || ''}
+                  onChange={(e) =>
+                    handleFieldUpdate('storyPoints', Number(e.target.value) || null)
+                  }
+                  min="0"
+                  placeholder="Enter story points"
+                />
+              </Form.Group>
+            </div>
+
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label>Due Date</Form.Label>
+                <Form.Control
+                  type="date"
+                  value={issue.dueDate ? issue.dueDate.split('T')[0] : ''}
+                  onChange={(e) => handleFieldUpdate('dueDate', e.target.value || null)}
+                />
+              </Form.Group>
+            </div>
+          </div>
+
+          {issue.labels && issue.labels.length > 0 && (
+            <Form.Group className="mb-3">
+              <Form.Label>Labels</Form.Label>
+              <div className="labels-list">
+                {issue.labels.map((label) => (
+                  <Badge key={label} bg="light" text="dark" className="label-badge">
+                    {label}
+                  </Badge>
+                ))}
+              </div>
+            </Form.Group>
+          )}
+
+          <div className="row">
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label className="text-muted">Created</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={new Date(issue.createdAt).toLocaleDateString()}
+                  disabled
+                  readOnly
+                />
+              </Form.Group>
+            </div>
+
+            <div className="col-md-6">
+              <Form.Group className="mb-3">
+                <Form.Label className="text-muted">Updated</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={new Date(issue.updatedAt).toLocaleDateString()}
+                  disabled
+                  readOnly
+                />
+              </Form.Group>
+            </div>
+          </div>
+        </Form>
       </Modal.Body>
     </Modal>
   );
