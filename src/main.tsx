@@ -5,16 +5,12 @@ import { RouterProvider } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { store } from './store';
 import { router } from './routes';
-import { worker } from './api/browser';
+import { initializeStore } from './store/initializeStore';
 import './styles/custom-bootstrap.scss';
 import './styles/index.css';
 
-// Start MSW in development
-if (import.meta.env.DEV) {
-  worker.start({
-    onUnhandledRequest: 'bypass',
-  });
-}
+// Initialize store with mock data
+initializeStore(store.dispatch);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { setProjects, setCurrentProject } from '@features/projects/projectsSlice';
+import { setCurrentProject } from '@features/projects/projectsSlice';
 import { useNavigate } from 'react-router-dom';
 import { FiUsers, FiFolder } from 'react-icons/fi';
 import ActivityTimeline from '@components/activity/ActivityTimeline/ActivityTimeline';
@@ -11,16 +10,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const projects = useAppSelector((state) => state.projects.projects);
   const user = useAppSelector((state) => state.auth.user);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const response = await fetch('/api/projects');
-      const data = await response.json();
-      dispatch(setProjects(data));
-    };
-
-    fetchProjects();
-  }, [dispatch]);
 
   const handleProjectClick = (project: typeof projects[0]) => {
     dispatch(setCurrentProject(project));

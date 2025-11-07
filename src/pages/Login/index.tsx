@@ -1,8 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '@/hooks';
-import { setUser } from '@features/auth/authSlice';
 import toast from 'react-hot-toast';
 import './Login.css';
 
@@ -11,28 +9,18 @@ const Login = () => {
   const [password, setPassword] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
+    // Simulate login delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
-      const data = await response.json();
-      dispatch(setUser(data.user));
-      toast.success('Welcome to Flowdeck!');
-      navigate('/dashboard');
-    } catch (error) {
-      toast.error('Login failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    // User is already in Redux store from initialization
+    toast.success('Welcome to Flowdeck!');
+    navigate('/dashboard');
+    setIsLoading(false);
   };
 
   return (
