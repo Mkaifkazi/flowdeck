@@ -6,11 +6,7 @@ import type { Issue, IssueType } from '@/types';
 import {
   FiX,
   FiTrash2,
-  FiUser,
-  FiCalendar,
-  FiClock,
   FiTag,
-  FiAlignLeft,
   FiCheckSquare,
   FiAlertCircle,
   FiZap,
@@ -33,11 +29,6 @@ const IssueDetailModal = ({ show, onHide, issueId }: IssueDetailModalProps) => {
   const [editedTitle, setEditedTitle] = useState('');
 
   if (!issue) return null;
-
-  const handleTitleEdit = () => {
-    setEditedTitle(issue.title);
-    setIsEditing(true);
-  };
 
   const handleTitleSave = () => {
     if (editedTitle.trim()) {
