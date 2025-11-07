@@ -3,8 +3,7 @@ import { users, currentUser, projects, currentProject, issues, sprints, comments
 
 export const handlers = [
   // Auth
-  http.post('/api/auth/login', async ({ request }) => {
-    const body = await request.json() as { email: string; password: string };
+  http.post('/api/auth/login', async () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     return HttpResponse.json({
@@ -13,7 +12,7 @@ export const handlers = [
     });
   }),
 
-  http.post('/api/auth/register', async ({ request }) => {
+  http.post('/api/auth/register', async () => {
     await new Promise((resolve) => setTimeout(resolve, 500));
     return HttpResponse.json({
       user: currentUser,

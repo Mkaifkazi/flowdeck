@@ -1,5 +1,5 @@
 import { Badge } from 'react-bootstrap';
-import { IssuePriority } from '@types/index';
+import { IssuePriority } from '@/types';
 import { FiArrowUp, FiArrowDown, FiMinus } from 'react-icons/fi';
 
 interface PriorityBadgeProps {

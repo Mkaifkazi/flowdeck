@@ -1,7 +1,7 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { useAppSelector } from '@/hooks';
-import { IssueStatus, IssuePriority, IssueType } from '@types/index';
+import { IssueStatus, IssuePriority, IssueType } from '@/types';
 import {
   FiCheckSquare,
   FiTrendingUp,

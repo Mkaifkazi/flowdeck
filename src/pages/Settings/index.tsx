@@ -5,10 +5,8 @@ import { updateUser } from '@features/users/usersSlice';
 import {
   FiUser,
   FiLock,
-  FiMail,
   FiBell,
   FiSettings,
-  FiGlobe,
   FiSave,
   FiCamera,
 } from 'react-icons/fi';

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Sprint } from '@types/index';
+import type { Sprint } from '@/types';
 
 interface SprintsState {
   sprints: Sprint[];

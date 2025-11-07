@@ -1,10 +1,10 @@
-import { Container, Card, Button, Badge, Row, Col, Form, Tabs, Tab } from 'react-bootstrap';
+import { Container, Card, Button, Badge, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '@/hooks';
 import { updateSprint } from '@features/sprints/sprintsSlice';
 import { updateIssue } from '@features/issues/issuesSlice';
-import { IssueStatus } from '@types/index';
+import { IssueStatus } from '@/types';
 import {
   FiCalendar,
   FiTarget,
@@ -21,7 +21,7 @@ import './Sprint.css';
 import { DndContext, DragOverlay, closestCorners, useSensor, useSensors, PointerSensor } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import type { Issue, Sprint as SprintType } from '@types/index';
+import type { Issue } from '@/types';
 
 const Sprint = () => {
   const { projectId, sprintId } = useParams<{ projectId: string; sprintId: string }>();
@@ -447,7 +447,7 @@ interface DroppableColumnProps {
   isOver: boolean;
 }
 
-const DroppableColumn = ({ id, children, isOver }: DroppableColumnProps) => {
+const DroppableColumn = ({ children, isOver }: DroppableColumnProps) => {
   return (
     <div className={`board-column-content ${isOver ? 'drag-over' : ''}`}>
       {children}

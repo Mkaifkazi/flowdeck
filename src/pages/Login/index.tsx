@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/hooks';

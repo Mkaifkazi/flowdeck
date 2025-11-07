@@ -1,6 +1,5 @@
 import { Card, Badge } from 'react-bootstrap';
-import type { Issue, User } from '@types/index';
-import { IssueType, IssuePriority } from '@types/index';
+import type { Issue, User } from '@/types';
 import TypeIcon from '@components/common/TypeIcon/TypeIcon';
 import PriorityBadge from '@components/common/PriorityBadge/PriorityBadge';
 import Avatar from '@components/common/Avatar/Avatar';

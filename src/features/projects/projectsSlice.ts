@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Project } from '@types/index';
+import type { Project } from '@/types';
 
 interface ProjectsState {
   projects: Project[];

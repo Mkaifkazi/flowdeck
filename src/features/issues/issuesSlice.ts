@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Issue } from '@types/index';
+import type { Issue } from '@/types';
 
 interface IssuesState {
   issues: Issue[];
@@ -26,13 +26,13 @@ const issuesSlice = createSlice({
     addIssue: (state, action: PayloadAction<Issue>) => {
       state.issues.push(action.payload);
     },
-    updateIssue: (state, action: PayloadAction<Issue>) => {
+    updateIssue: (state, action: PayloadAction<{ id: string; updates: Partial<Issue> }>) => {
       const index = state.issues.findIndex((i) => i.id === action.payload.id);
       if (index !== -1) {
-        state.issues[index] = action.payload;
+        state.issues[index] = { ...state.issues[index], ...action.payload.updates };
       }
       if (state.currentIssue?.id === action.payload.id) {
-        state.currentIssue = action.payload;
+        state.currentIssue = { ...state.currentIssue, ...action.payload.updates };
       }
     },
     deleteIssue: (state, action: PayloadAction<string>) => {

@@ -1,8 +1,8 @@
-import { Modal, Form, Button, Badge, Dropdown } from 'react-bootstrap';
+import { Modal, Form, Button, Badge } from 'react-bootstrap';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { updateIssue, deleteIssue } from '@features/issues/issuesSlice';
-import type { Issue, IssueType, IssuePriority, IssueStatus } from '@types/index';
+import type { Issue, IssueType } from '@/types';
 import {
   FiX,
   FiTrash2,
@@ -34,8 +34,6 @@ const IssueDetailModal = ({ show, onHide, issueId }: IssueDetailModalProps) => {
 
   if (!issue) return null;
 
-  const assignee = users.find((u) => u.id === issue.assigneeId);
-
   const handleTitleEdit = () => {
     setEditedTitle(issue.title);
     setIsEditing(true);
@@ -66,29 +64,14 @@ const IssueDetailModal = ({ show, onHide, issueId }: IssueDetailModalProps) => {
 
   const getTypeIcon = (type: IssueType) => {
     switch (type) {
-      case 'STORY':
+      case 'story':
         return <FiCheckSquare className="type-icon story" />;
-      case 'BUG':
+      case 'bug':
         return <FiAlertCircle className="type-icon bug" />;
-      case 'TASK':
+      case 'task':
         return <FiTag className="type-icon task" />;
-      case 'EPIC':
+      case 'epic':
         return <FiZap className="type-icon epic" />;
-    }
-  };
-
-  const getPriorityColor = (priority: IssuePriority) => {
-    switch (priority) {
-      case 'HIGHEST':
-        return 'danger';
-      case 'HIGH':
-        return 'warning';
-      case 'MEDIUM':
-        return 'primary';
-      case 'LOW':
-        return 'secondary';
-      case 'LOWEST':
-        return 'light';
     }
   };
 

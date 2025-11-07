@@ -1,5 +1,5 @@
 import { Badge } from 'react-bootstrap';
-import { IssueStatus } from '@types/index';
+import { IssueStatus } from '@/types';
 
 interface StatusBadgeProps {
   status: IssueStatus;

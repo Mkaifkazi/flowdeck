@@ -2,7 +2,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { addIssue } from '@features/issues/issuesSlice';
-import { IssueType, IssuePriority, IssueStatus } from '@types/index';
+import { IssueType, IssuePriority, IssueStatus } from '@/types';
 import { FiX } from 'react-icons/fi';
 import './CreateIssueModal.css';
 
@@ -58,16 +58,16 @@ const CreateIssueModal = ({
       key: generateIssueKey(),
       projectId,
       title: formData.title.trim(),
-      description: formData.description.trim() || undefined,
+      description: formData.description.trim() || '',
       type: formData.type,
       priority: formData.priority,
       status: formData.status,
-      assigneeId: formData.assigneeId || null,
+      assigneeId: formData.assigneeId || undefined,
       reporterId: users[0]?.id || '', // Default to first user
-      storyPoints: formData.storyPoints ? Number(formData.storyPoints) : null,
-      dueDate: formData.dueDate || null,
+      storyPoints: formData.storyPoints ? Number(formData.storyPoints) : undefined,
+      dueDate: formData.dueDate || undefined,
       labels: [],
-      comments: [],
+      watchers: [],
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };

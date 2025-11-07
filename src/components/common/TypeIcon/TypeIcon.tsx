@@ -1,4 +1,4 @@
-import { IssueType } from '@types/index';
+import { IssueType } from '@/types';
 import { FiCheckSquare, FiAlertCircle, FiFileText, FiLayers, FiList } from 'react-icons/fi';
 
 interface TypeIconProps {

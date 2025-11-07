@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useAppSelector } from '@/hooks';
 import IssueDetailModal from '@components/issues/IssueDetailModal/IssueDetailModal';
 import CreateIssueModal from '@components/issues/CreateIssueModal/CreateIssueModal';
-import { IssueType, IssuePriority, IssueStatus } from '@types/index';
+import { IssueType, IssuePriority, IssueStatus } from '@/types';
 import {
   FiCheckSquare,
   FiAlertCircle,

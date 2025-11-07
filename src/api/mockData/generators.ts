@@ -5,13 +5,13 @@ import type {
   Issue,
   Sprint,
   Comment,
-} from '@types/index';
+} from '@/types';
 import {
   IssueType,
   IssuePriority,
   IssueStatus,
   UserRole,
-} from '@types/index';
+} from '@/types';
 
 export const generateUser = (): User => ({
   id: faker.string.uuid(),

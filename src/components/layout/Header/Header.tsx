@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, Dropdown, Form } from 'react-bootstrap';
+import { Navbar, Container, Dropdown, Form } from 'react-bootstrap';
 import { FiMenu, FiSearch, FiBell, FiPlus } from 'react-icons/fi';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { toggleSidebar } from '@features/ui/uiSlice';

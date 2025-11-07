@@ -1,32 +1,40 @@
-export enum IssueType {
-  TASK = 'task',
-  BUG = 'bug',
-  STORY = 'story',
-  EPIC = 'epic',
-  SUBTASK = 'subtask',
-}
+export const IssueType = {
+  TASK: 'task',
+  BUG: 'bug',
+  STORY: 'story',
+  EPIC: 'epic',
+  SUBTASK: 'subtask',
+} as const;
 
-export enum IssuePriority {
-  HIGHEST = 'highest',
-  HIGH = 'high',
-  MEDIUM = 'medium',
-  LOW = 'low',
-  LOWEST = 'lowest',
-}
+export type IssueType = typeof IssueType[keyof typeof IssueType];
 
-export enum IssueStatus {
-  TODO = 'todo',
-  IN_PROGRESS = 'in_progress',
-  IN_REVIEW = 'in_review',
-  DONE = 'done',
-}
+export const IssuePriority = {
+  HIGHEST: 'highest',
+  HIGH: 'high',
+  MEDIUM: 'medium',
+  LOW: 'low',
+  LOWEST: 'lowest',
+} as const;
 
-export enum UserRole {
-  ADMIN = 'admin',
-  PROJECT_MANAGER = 'project_manager',
-  DEVELOPER = 'developer',
-  VIEWER = 'viewer',
-}
+export type IssuePriority = typeof IssuePriority[keyof typeof IssuePriority];
+
+export const IssueStatus = {
+  TODO: 'todo',
+  IN_PROGRESS: 'in_progress',
+  IN_REVIEW: 'in_review',
+  DONE: 'done',
+} as const;
+
+export type IssueStatus = typeof IssueStatus[keyof typeof IssueStatus];
+
+export const UserRole = {
+  ADMIN: 'admin',
+  PROJECT_MANAGER: 'project_manager',
+  DEVELOPER: 'developer',
+  VIEWER: 'viewer',
+} as const;
+
+export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 export type User = {
   id: string;
@@ -63,6 +71,7 @@ export type Issue = {
   epicId?: string;
   parentId?: string;
   estimatePoints?: number;
+  storyPoints?: number;
   timeSpent?: number;
   labels: string[];
   watchers: string[];

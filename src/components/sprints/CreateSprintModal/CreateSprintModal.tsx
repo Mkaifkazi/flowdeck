@@ -2,7 +2,7 @@ import { Modal, Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
 import { useAppDispatch } from '@/hooks';
 import { addSprint } from '@features/sprints/sprintsSlice';
-import type { Sprint } from '@types/index';
+import type { Sprint } from '@/types';
 import './CreateSprintModal.css';
 
 interface CreateSprintModalProps {
@@ -64,12 +64,6 @@ const CreateSprintModal = ({ show, onHide, projectId }: CreateSprintModalProps) 
 
   const handleChange = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const getTwoWeeksFromNow = () => {
-    const date = new Date();
-    date.setDate(date.getDate() + 14);
-    return date.toISOString().split('T')[0];
   };
 
   const getToday = () => {

@@ -4,7 +4,7 @@ import { useAppSelector, useAppDispatch } from '@/hooks';
 import IssueCard from '@components/issues/IssueCard/IssueCard';
 import IssueDetailModal from '@components/issues/IssueDetailModal/IssueDetailModal';
 import CreateIssueModal from '@components/issues/CreateIssueModal/CreateIssueModal';
-import { IssueStatus } from '@types/index';
+import { IssueStatus } from '@/types';
 import { FiPlus } from 'react-icons/fi';
 import {
   DndContext,
@@ -258,7 +258,7 @@ const ProjectBoard = () => {
         {activeIssue ? (
           <IssueCard
             issue={activeIssue}
-            assignee={activeAssignee}
+            assignee={activeAssignee || undefined}
             onClick={() => {}}
           />
         ) : null}

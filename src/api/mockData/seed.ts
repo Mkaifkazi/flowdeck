@@ -1,5 +1,5 @@
 import { generateComment } from './generators';
-import type { User, Project, Issue, Sprint, Comment } from '@types/index';
+import type { User, Project, Issue, Sprint, Comment } from '@/types';
 import usersData from '@/data/users.json';
 import projectsData from '@/data/projects.json';
 import issuesData from '@/data/issues.json';
