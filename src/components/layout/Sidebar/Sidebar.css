@@ -1,0 +1,106 @@
+.sidebar {
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  background: white;
+  border-right: 1px solid #e2e8f0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1020;
+}
+
+.sidebar.collapsed {
+  width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-content {
+  padding: 1.5rem 0;
+  height: calc(100% - 70px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar .nav-link {
+  padding: 0.75rem 1.5rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 3px solid transparent;
+  white-space: nowrap;
+  font-weight: 500;
+  margin: 0.25rem 0;
+  position: relative;
+}
+
+.sidebar.collapsed .nav-link {
+  padding: 0.75rem;
+  justify-content: center;
+}
+
+.sidebar .nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 0;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  transition: height 0.3s ease;
+  border-radius: 0 4px 4px 0;
+}
+
+.sidebar .nav-link:hover {
+  color: #6366f1;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.08) 0%, transparent 100%);
+}
+
+.sidebar .nav-link:hover::before {
+  height: 60%;
+}
+
+.sidebar .nav-link.active {
+  color: #6366f1;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.12) 0%, transparent 100%);
+  font-weight: 600;
+}
+
+.sidebar .nav-link.active::before {
+  height: 100%;
+}
+
+.sidebar .nav-link svg {
+  flex-shrink: 0;
+}
+
+.sidebar-toggle-btn {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid #e2e8f0;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #64748b;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-toggle-btn:hover {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-color: transparent;
+  color: white;
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+}
+
+.sidebar-toggle-btn:active {
+  transform: translateX(-50%) scale(0.95);
+}

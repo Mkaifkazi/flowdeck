@@ -1,0 +1,66 @@
+[
+  {
+    "id": "user-1",
+    "email": "john.doe@flowdeck.com",
+    "name": "John Doe",
+    "avatar": "https://i.pravatar.cc/150?img=12",
+    "role": "admin",
+    "createdAt": "2024-01-15T08:00:00.000Z"
+  },
+  {
+    "id": "user-2",
+    "email": "sarah.wilson@flowdeck.com",
+    "name": "Sarah Wilson",
+    "avatar": "https://i.pravatar.cc/150?img=45",
+    "role": "project_manager",
+    "createdAt": "2024-01-20T09:30:00.000Z"
+  },
+  {
+    "id": "user-3",
+    "email": "mike.chen@flowdeck.com",
+    "name": "Mike Chen",
+    "avatar": "https://i.pravatar.cc/150?img=33",
+    "role": "developer",
+    "createdAt": "2024-02-01T10:00:00.000Z"
+  },
+  {
+    "id": "user-4",
+    "email": "emily.rodriguez@flowdeck.com",
+    "name": "Emily Rodriguez",
+    "avatar": "https://i.pravatar.cc/150?img=47",
+    "role": "developer",
+    "createdAt": "2024-02-05T11:15:00.000Z"
+  },
+  {
+    "id": "user-5",
+    "email": "alex.kumar@flowdeck.com",
+    "name": "Alex Kumar",
+    "avatar": "https://i.pravatar.cc/150?img=68",
+    "role": "developer",
+    "createdAt": "2024-02-10T14:20:00.000Z"
+  },
+  {
+    "id": "user-6",
+    "email": "lisa.anderson@flowdeck.com",
+    "name": "Lisa Anderson",
+    "avatar": "https://i.pravatar.cc/150?img=29",
+    "role": "developer",
+    "createdAt": "2024-02-15T08:45:00.000Z"
+  },
+  {
+    "id": "user-7",
+    "email": "david.thompson@flowdeck.com",
+    "name": "David Thompson",
+    "avatar": "https://i.pravatar.cc/150?img=52",
+    "role": "developer",
+    "createdAt": "2024-03-01T09:00:00.000Z"
+  },
+  {
+    "id": "user-8",
+    "email": "maria.garcia@flowdeck.com",
+    "name": "Maria Garcia",
+    "avatar": "https://i.pravatar.cc/150?img=38",
+    "role": "viewer",
+    "createdAt": "2024-03-05T13:30:00.000Z"
+  }
+]

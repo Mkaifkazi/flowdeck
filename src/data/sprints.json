@@ -1,0 +1,72 @@
+[
+  {
+    "id": "sprint-1",
+    "name": "Sprint 1 - Foundation",
+    "projectId": "project-1",
+    "goal": "Set up project infrastructure and implement core authentication features",
+    "startDate": "2024-10-01",
+    "endDate": "2024-10-14",
+    "status": "completed",
+    "createdAt": "2024-09-28T10:00:00.000Z"
+  },
+  {
+    "id": "sprint-2",
+    "name": "Sprint 2 - Product Catalog",
+    "projectId": "project-1",
+    "goal": "Build product listing, search, and filtering functionality",
+    "startDate": "2024-10-15",
+    "endDate": "2024-10-28",
+    "status": "completed",
+    "createdAt": "2024-10-14T15:30:00.000Z"
+  },
+  {
+    "id": "sprint-3",
+    "name": "Sprint 3 - Shopping Cart & Checkout",
+    "projectId": "project-1",
+    "goal": "Implement shopping cart, payment integration, and order processing",
+    "startDate": "2024-10-29",
+    "endDate": "2024-11-11",
+    "status": "active",
+    "createdAt": "2024-10-28T09:00:00.000Z"
+  },
+  {
+    "id": "sprint-4",
+    "name": "Sprint 4 - User Dashboard",
+    "projectId": "project-1",
+    "goal": "Create user profile, order history, and wishlist features",
+    "startDate": "2024-11-12",
+    "endDate": "2024-11-25",
+    "status": "planned",
+    "createdAt": "2024-11-01T11:00:00.000Z"
+  },
+  {
+    "id": "sprint-5",
+    "name": "Sprint 1 - Core Banking",
+    "projectId": "project-2",
+    "goal": "Implement account management and transaction history",
+    "startDate": "2024-10-20",
+    "endDate": "2024-11-02",
+    "status": "completed",
+    "createdAt": "2024-10-18T10:00:00.000Z"
+  },
+  {
+    "id": "sprint-6",
+    "name": "Sprint 2 - Transfers & Payments",
+    "projectId": "project-2",
+    "goal": "Build instant transfer and bill payment functionality",
+    "startDate": "2024-11-03",
+    "endDate": "2024-11-16",
+    "status": "active",
+    "createdAt": "2024-11-02T14:00:00.000Z"
+  },
+  {
+    "id": "sprint-7",
+    "name": "Sprint 1 - Patient Management",
+    "projectId": "project-3",
+    "goal": "Create patient registration, records, and appointment system",
+    "startDate": "2024-11-01",
+    "endDate": "2024-11-14",
+    "status": "active",
+    "createdAt": "2024-10-30T09:30:00.000Z"
+  }
+]

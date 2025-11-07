@@ -1,0 +1,32 @@
+[
+  {
+    "id": "project-1",
+    "name": "E-Commerce Platform",
+    "key": "ECP",
+    "description": "Building a modern e-commerce platform with advanced features including product recommendations, real-time inventory, and seamless checkout experience.",
+    "ownerId": "user-1",
+    "members": ["user-1", "user-2", "user-3", "user-4", "user-5"],
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-11-05T14:30:00.000Z"
+  },
+  {
+    "id": "project-2",
+    "name": "Mobile Banking App",
+    "key": "MBA",
+    "description": "Secure mobile banking application with biometric authentication, instant transfers, bill payments, and comprehensive financial analytics.",
+    "ownerId": "user-2",
+    "members": ["user-2", "user-3", "user-6", "user-7"],
+    "createdAt": "2024-02-20T09:00:00.000Z",
+    "updatedAt": "2024-11-06T10:15:00.000Z"
+  },
+  {
+    "id": "project-3",
+    "name": "Healthcare Management System",
+    "key": "HMS",
+    "description": "Comprehensive healthcare platform for patient records, appointment scheduling, telemedicine, and medical billing integration.",
+    "ownerId": "user-1",
+    "members": ["user-1", "user-4", "user-5", "user-6", "user-8"],
+    "createdAt": "2024-03-10T11:30:00.000Z",
+    "updatedAt": "2024-11-07T09:45:00.000Z"
+  }
+]
